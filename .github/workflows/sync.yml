@@ -13,6 +13,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: false
+          fetch-depth: 0   # make sure we get full history
 
       - name: Setup Git
         run: |
@@ -24,5 +25,5 @@ jobs:
           git remote add upstream https://github.com/epfml/ML_course
           git fetch upstream
           git checkout main
-          git merge upstream/main --no-edit --allow-unrelated-histories || true
+          git pull upstream main --strategy=ours
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} main
