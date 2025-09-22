@@ -25,5 +25,5 @@ jobs:
           git remote add upstream https://github.com/epfml/ML_course
           git fetch upstream
           git checkout main
-          git pull upstream main --strategy=ours
+          git pull upstream main --strategy=ours --allow-unrelated-histories
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} main
