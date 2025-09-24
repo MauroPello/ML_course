@@ -9,21 +9,9 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: tgymnich/fork-sync@v2.0
         with:
-          persist-credentials: false
-          fetch-depth: 0   # make sure we get full history
-
-      - name: Setup Git
-        run: |
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-
-      - name: Sync upstream -> fork
-        run: |
-          git remote add upstream https://github.com/epfml/ML_course
-          git fetch upstream
-          git checkout main
-          git rebase upstream/main
-          git push --force https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} main
+          owner: epfml
+          repo: ML_course
+          base: main
+          head: main
