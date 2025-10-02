@@ -5,23 +5,20 @@ import numpy as np
 
 
 def build_poly(x, degree):
-    """polynomial basis functions for input data x, for j=0 up to j=degree.
+    """polynomial basis functions for input data x, for j=0 up to j=degree."""
+    # N = x.shape[0]
+    # d = degree + 1
+    # poly = np.zeros(shape=(N, d))
 
-    Args:
-        x: numpy array of shape (N,), N is the number of samples.
-        degree: integer.
+    # for i in range(N):
+    #     for j in range(d):
+    #         poly[i, j] = x[i] ** j
 
-    Returns:
-        poly: numpy array of shape (N,d+1)
+    # return poly
 
-    >>> build_poly(np.array([0.0, 1.5]), 2)
-    array([[1.  , 0.  , 0.  ],
-           [1.  , 1.5 , 2.25]])
-    """
-    # ***************************************************
-    # COPY YOUR CODE FROM EX03 HERE
-    # polynomial basis function: TODO
-    # this function should return the matrix formed
-    # by applying the polynomial basis to the input data
-    # ***************************************************
-    raise NotImplementedError
+    # This is a vectorized version of the nested for loops.
+    # It uses numpy's broadcasting to compute the powers.
+    # x[:, np.newaxis] has shape (N, 1)
+    # np.arange(degree + 1) has shape (degree+1,)
+    # The result of the power operation is a (N, degree+1) array.
+    return x[:, np.newaxis] ** np.arange(degree + 1)
