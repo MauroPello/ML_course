@@ -3,9 +3,9 @@ name: Sync Fork
 on:
   schedule:
     - cron: '0 8,12,16 * * 1,5'
-    - cron: '15 14 * * 2'
-    - cron: '15 8 * * 3'
-    - cron: '15 12 * * 4'
+    - cron: '0 14 * * 2'
+    - cron: '0 8 * * 3'
+    - cron: '0 12 * * 4'
   workflow_dispatch:        # lets you trigger manually from Actions tab
 
 jobs:
